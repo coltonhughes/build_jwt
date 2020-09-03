@@ -101,7 +101,7 @@ def run_module():
     expires_in=expiration
   )
 
-  if algorithm == 'HS256':
+  if algorithm.lower() == 'hs256':
     try:
       encoded_jwt = jwt.encode(
         {
