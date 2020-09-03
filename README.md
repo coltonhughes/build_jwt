@@ -2,6 +2,8 @@
 This module is quite simple.
 It takes data in the form of inputs to generate a JWT token and is returned to you.
 
+# NOTE
+This is currently specific to my use cases for Zoom API.. Im open to forking/opening issues to broaden the scope of this collection
 ## Example
 ```
 - name: Generate JWT Token
