@@ -6,10 +6,10 @@
 namespace: cheemychanga
 
 # The name of the collection. Has the same character restrictions as 'namespace'
-name: o365_ediscovery
+name: build_jwt
 
 # The version of the collection. Must be compatible with semantic versioning
-version: 1.0.1
+version: 1.0.0
 
 # The path to the Markdown (.md) readme file. This path is relative to the root of the collection
 readme: README.md
