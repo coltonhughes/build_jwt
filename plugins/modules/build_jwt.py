@@ -61,7 +61,7 @@ expires_in:
   returned: always
 '''
 import traceback
-
+import time
 try:
   import jwt
   HAS_LIB = True
@@ -78,7 +78,7 @@ def run_module():
   module_args = dict(
     secret=dict(type='str', required=True, no_log=True),
     issuer=dict(type='str', required=True),
-    expiration=dict(type='str', required=True),
+    expiration=dict(type='int', required=True),
     algorithm=dict(type='str', choices=['HS256'], required=True)
   )
 
@@ -95,10 +95,14 @@ def run_module():
   expiration = module.params['expiration']
   algorithm = module.params['algorithm']
 
+  epoch = int(time.time())
+
+  exp = epoch + expiration
+
   result = dict(
     changed=False,
     token='',
-    expires_in=expiration
+    expires_in=exp
   )
 
   if algorithm.lower() == 'hs256':
@@ -106,7 +110,7 @@ def run_module():
       encoded_jwt = jwt.encode(
         {
           "iss": issuer,
-          "exp": expiration
+          "exp": exp
         },
         secret,
         algorithm=algorithm)
